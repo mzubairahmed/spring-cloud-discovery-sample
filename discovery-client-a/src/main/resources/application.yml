@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: discovery-client-a
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+
+server:
+  port: 8081
+
+management:
+    security:
+        enabled: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 6000
+
+ribbon:
+    ReadTimeout: 60000
+    ConnectTimeout: 60000
